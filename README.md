@@ -1,4 +1,4 @@
-# Telemetry OpenCensus
+# Telemetry OpenTelemetry
 
 This package contains a [Telemetry Metric](https://github.com/tetratelabs/telemetry) 
 interface compatible implementation based on [OpenTelemetry](https://opentelemetry.io/). 
