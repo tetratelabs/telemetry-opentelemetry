@@ -13,5 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package opentelemetry provides ...
+// Package opentelemetry provides a telemetry Metric interface implementation
+// based on OpenTelemetry.
 package opentelemetry
