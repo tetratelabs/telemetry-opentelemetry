@@ -17,6 +17,7 @@ package opentelemetry_test
 
 import (
 	"github.com/tetratelabs/telemetry"
+
 	"github.com/tetratelabs/telemetry-opentelemetry"
 )
 

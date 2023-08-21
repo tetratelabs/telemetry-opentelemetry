@@ -17,6 +17,8 @@ package opentelemetry_test
 
 import (
 	"github.com/tetratelabs/telemetry"
+
+	"github.com/tetratelabs/telemetry-opentelemetry"
 )
 
 var (
@@ -32,6 +34,8 @@ func Example_newSum() {
 			"Number of requests handled, by protocol",
 		)
 	})
+	telemetry.SetGlobalMetricSink(opentelemetry.New("example"))
+
 	// increment on every http request
 	requests.With(protocol.Insert("http")).Increment()
 
