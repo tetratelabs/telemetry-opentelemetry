@@ -111,8 +111,14 @@ type metrics struct {
 func (m *metricSink) ExportMetricDefinitions() []MetricDefinition {
 	m.knownMetrics.mu.Lock()
 	defer m.knownMetrics.mu.Unlock()
-	return slices.SortFunc(maps.Values(m.knownMetrics.known), func(a, b MetricDefinition) bool {
-		return a.Name < b.Name
+	return slices.SortFunc(maps.Values(m.knownMetrics.known), func(a, b MetricDefinition) int {
+		if a.Name < b.Name {
+			return -1
+		} else if a.Name == b.Name {
+			return 0
+		} else {
+			return 1
+		}
 	})
 }
 
