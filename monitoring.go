@@ -21,7 +21,6 @@ import (
 
 	"github.com/tetratelabs/telemetry"
 	"go.opentelemetry.io/otel/sdk/metric"
-	"go.opentelemetry.io/otel/sdk/metric/aggregation"
 
 	"github.com/tetratelabs/telemetry-opentelemetry/internal/maps"
 	"github.com/tetratelabs/telemetry-opentelemetry/internal/slices"
@@ -146,9 +145,11 @@ func (d *metrics) toHistogramViews() []metric.Option {
 		// for each histogram metric (i.e. those with bounds), set up a view explicitly defining those buckets.
 		v := metric.WithView(metric.NewView(
 			metric.Instrument{Name: name},
-			metric.Stream{Aggregation: aggregation.ExplicitBucketHistogram{
-				Boundaries: def.Bounds,
-			}},
+			metric.Stream{
+				Aggregation: metric.AggregationExplicitBucketHistogram{
+					Boundaries: def.Bounds,
+				},
+			},
 		))
 		opts = append(opts, v)
 	}
